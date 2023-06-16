@@ -39,7 +39,7 @@ Where `token` is the Telegram bot token. You can get a token by talking to @BotF
 
 ## Roadmap
 
-- [ ] Move to a better OCR model
+- [x] Move to a better OCR model
 - [ ] Add support for multiple languages
 - [ ] Add support for more document types
 - [ ] Add support to use multiple documents at once

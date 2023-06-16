@@ -7,8 +7,10 @@ from tools.text_extractor import *
 
 
 class Document:
-    def __init__(self, name, content=None, path=None, delimiter='\n'):
+    def __init__(self, name, content=None, path=None, delimiter='. '):
         self.embedder = Embedder()
+        self.ocr = OCR()
+
         self.name = name
         self.content = content
         self.path = path
@@ -26,7 +28,8 @@ class Document:
             self.make_index()
 
     def extract_content(self):
-        text = text_from_pdf(self.path)
+        # text = text_from_pdf(self.path)
+        text = self.ocr.text_from_pdf_gpu(self.path)
         # Join pages
         text = '\n'.join(text)
         text = text.replace('-\n', '')
