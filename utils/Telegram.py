@@ -79,8 +79,10 @@ class TelegramBot:
         else:
             retrieved = None
 
-        answer = self.llm.generate(update.message.text, retrieved, history.get(), top_k=50, temperature=0.1, top_p=0.95,
+        answer = self.llm.generate(update.message.text, retrieved, history.get(), top_k=50, temperature=0.5, top_p=0.95,
                                    repetition_penalty=1.05).strip()
+        if answer == '':
+            answer = "Please, try rephrasing your question"
 
         if self.logging:
             await self.users.get(update.effective_user.id).log(update.message.text, answer)
